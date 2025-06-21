@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Arth - Audio Chat Assistant</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    button { font-size: 16px; padding: 10px 20px; margin-top: 10px; }
+    audio { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h2>🎙️ Talk to Arth</h2>
+  <p>Click below, ask a question, and get a response!</p>
+
+  <button id="recordBtn">🎤 Record</button>
+  <button id="stopBtn" disabled>⏹️ Stop</button>
+
+  <h3>Transcript</h3>
+  <pre id="transcript">...</pre>
+
+  <h3>Response</h3>
+  <pre id="response">...</pre>
+
+  <h3>Audio Reply</h3>
+  <audio id="audioPlayer" controls></audio>
+
+  <script>
+    let mediaRecorder;
+    let audioChunks = [];
+
+    const recordBtn = document.getElementById("recordBtn");
+    const stopBtn = document.getElementById("stopBtn");
+    const transcriptEl = document.getElementById("transcript");
+    const responseEl = document.getElementById("response");
+    const audioPlayer = document.getElementById("audioPlayer");
+
+    recordBtn.onclick = async () => {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaRecorder = new MediaRecorder(stream);
+      audioChunks = [];
+
+      mediaRecorder.ondataavailable = event => audioChunks.push(event.data);
+
+      mediaRecorder.onstop = async () => {
+        const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' });
+        const formData = new FormData();
+        formData.append("file", audioBlob, "input.mp3");
+
+        const res = await fetch("/talk", { method: "POST", body: formData });
+        const result = await res.json();
+
+        transcriptEl.textContent = result.transcript;
+        responseEl.textContent = result.response;
+
+        if (result.audio_file && result.audio_file.endsWith(".mp3")) {
+          audioPlayer.src = `/play?ts=${Date.now()}`; // cache bust
+        }
+      };
+
+      mediaRecorder.start();
+      recordBtn.disabled = true;
+      stopBtn.disabled = false;
+    };
+
+    stopBtn.onclick = () => {
+      mediaRecorder.stop();
+      recordBtn.disabled = false;
+      stopBtn.disabled = true;
+    };
+  </script>
+</body>
+</html>
