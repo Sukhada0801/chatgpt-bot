@@ -1,6 +1,6 @@
-#  Voice-to-Voice Q&A System Using OpenAI & ElevenLabs
 
-This project enables users to **ask questions by speaking**, and receive an **audio response**. It uses OpenAI’s **Whisper API** for speech-to-text transcription, **GPT-4o** for generating a response, and **ElevenLabs** to convert the response back to speech.
+
+This project enables users to ask questions by speaking, and receive an audio response. It uses OpenAI’s Whisper API for speech-to-text transcription, GPT-4o for generating a response, and ElevenLabs to convert the response back to speech.
 
 Includes a browser-based interface to record your voice and hear the answer—no typing needed.
 
