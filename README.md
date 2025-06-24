@@ -16,7 +16,7 @@ Includes a browser-based interface to record your voice and hear the answer—no
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Component           | Technology          |
 |--------------------|---------------------|
@@ -70,14 +70,14 @@ Open `index.html` in a browser (recommended: Live Server extension in VSCode or 
 
 ---
 
-## 🔐 API Requirements
+## API Requirements
 
 - **OpenAI API key**: for Whisper + GPT-4o
 - **ElevenLabs API key**: for high-quality speech synthesis
 
 ---
 
-## 🌱 Use Cases
+## Use Cases
 
 - General knowledge Q&A
 - Domain-specific queries (e.g., finance, health, tech)
