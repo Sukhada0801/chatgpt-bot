@@ -1,4 +1,4 @@
-# 🎙️ Voice-to-Voice Q&A System Using OpenAI & ElevenLabs
+#  Voice-to-Voice Q&A System Using OpenAI & ElevenLabs
 
 This project enables users to **ask questions by speaking**, and receive an **audio response**. It uses OpenAI’s **Whisper API** for speech-to-text transcription, **GPT-4o** for generating a response, and **ElevenLabs** to convert the response back to speech.
 
@@ -6,13 +6,13 @@ Includes a browser-based interface to record your voice and hear the answer—no
 
 ---
 
-## 🔁 How It Works
+## How It Works
 
-1. **🎤 Record Your Voice** using the browser (Start/Stop).
-2. **🧠 Whisper API** transcribes the voice into text.
-3. **💬 GPT-4o** processes the query and generates a relevant text response.
-4. **🗣️ ElevenLabs API** converts that text to speech.
-5. **🔊 Audio Response** is played back in the browser + text is shown.
+1. Record Your Voice using the browser (Start/Stop).
+2. Whisper API** transcribes the voice into text.
+3. GPT-4o processes the query and generates a relevant text response.
+4. ElevenLabs API converts that text to speech.
+5. Audio Response is played back in the browser + text is shown.
 
 ---
 
@@ -27,21 +27,7 @@ Includes a browser-based interface to record your voice and hear the answer—no
 | Text-to-Speech     | ElevenLabs API      |
 
 ---
-
-## 📁 Project Structure
-
-```bash
-├── main.py             # FastAPI backend
-├── test_audio.py       # Script to test with local audio files
-├── index.html          # Simple frontend for recording and playback
-├── .env                # Stores API keys
-├── response.json       # Example API response
-├── README.md           # Project documentation
-```
-
----
-
-## ⚙️ Setup Instructions
+Setup Instructions
 
 ### 1. Clone the Repo
 
@@ -84,17 +70,6 @@ Open `index.html` in a browser (recommended: Live Server extension in VSCode or 
 
 ---
 
-## 🧪 Test via cURL
-
-```bash
-curl -X POST "http://localhost:8000/process_audio" \
-  -H  "accept: audio/mpeg" \
-  -H  "Content-Type: multipart/form-data" \
-  -F "audio_file=@your_audio_file.mp3"
-```
-
----
-
 ## 🔐 API Requirements
 
 - **OpenAI API key**: for Whisper + GPT-4o
@@ -110,10 +85,3 @@ curl -X POST "http://localhost:8000/process_audio" \
 - Educational voice bots
 
 ---
-
-## 📌 Future Enhancements
-
-- Voice-based multi-turn conversations
-- Context tracking with memory
-- Full mobile/web deployment
-- Language selection and subtitles
