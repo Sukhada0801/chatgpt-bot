@@ -9,7 +9,7 @@ Includes a browser-based interface to record your voice and hear the answer—no
 ## How It Works
 
 1. Record Your Voice using the browser (Start/Stop).
-2. Whisper API** transcribes the voice into text.
+2. Whisper API transcribes the voice into text.
 3. GPT-4o processes the query and generates a relevant text response.
 4. ElevenLabs API converts that text to speech.
 5. Audio Response is played back in the browser + text is shown.
